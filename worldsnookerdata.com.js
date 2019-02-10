@@ -1,3 +1,4 @@
+
 var frames = {"p1": 0, "p2": 0};
 
 $("table.frame-data tbody tr").each(function() {
@@ -25,4 +26,18 @@ $("#label-timer").each(function() {
 	    counter--;
 	    elem.text(counter);
 	}, second);
-});
+})
+
+var players = {};
+
+$("#iface-content table tbody tr").each(function() {
+	var player = $(this).find("td:eq(1) a").text();
+	players[player]  = ~~players[player] + 1;
+}).each(function() {
+	var a = $(this).find("td:eq(1) a");
+	a.append(' (' + players[a.text()] + ')');
+})
+
+
+
+
